@@ -1,0 +1,25 @@
+{
+    "name": "thelfensdrfer/yii-ssh-console",
+    "description": "SSH library for yii console commands",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Helfensdoerfer",
+            "email": "tim@visualappeal.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "phpseclib/phpseclib": "0.3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "yiisshconsole\\": "src/"
+        },
+        "files": [
+            "../../phpseclib/phpseclib/phpseclib/Net/SSH2.php"
+        ]
+    }
+}
