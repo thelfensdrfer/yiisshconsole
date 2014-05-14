@@ -1,4 +1,4 @@
-<?php namespace yiisshconsole;
+<?php
 
 define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
 
@@ -6,7 +6,7 @@ class LoginFailedException extends \Exception {}
 class LoginUnknownException extends \Exception {}
 class NotConnectedException extends \Exception {}
 
-class Command extends CConsoleCommand
+class SshCommand extends CConsoleCommand
 {
 	/**
 	 * Store of the ssh session.
@@ -33,8 +33,8 @@ class Command extends CConsoleCommand
 	 * @param integer $port Default 22
 	 * @param integer $timeout Default 10 seconds
 	 *
-	 * @throws \yiisshconsole\LoginFailedException If the login failes
-	 * @throws \yiisshconsole\LoginUnknownException If no username is set
+	 * @throws \LoginFailedException If the login failes
+	 * @throws \LoginUnknownException If no username is set
 	 *
 	 * @return bool
 	 */
@@ -112,11 +112,11 @@ class Command extends CConsoleCommand
 	 * @param string|array $commands
 	 * @param callable $callback
 	 *
-	 * @throws NotConnectedException If the client is not connected to the server
+	 * @throws \NotConnectedException If the client is not connected to the server
 	 *
 	 * @return string|null
 	 */
-	public function run($commands, $callback = null)
+	public function exec($commands, $callback = null)
 	{
 		if (!$this->ssh->isConnected())
 			throw new NotConnectedException();
