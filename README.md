@@ -1,6 +1,6 @@
-# Yii2 SSH Console
+# Yii SSH Console
 
-Controller with ssh commands for the yii2 console.
+Controller with ssh commands for the yii console.
 
 ## Example
 
