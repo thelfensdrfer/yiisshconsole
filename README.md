@@ -5,11 +5,9 @@ Controller with ssh commands for the yii2 console.
 ## Example
 
 ```php
-<?php namespace app\commands;
+<?php 
 
-use \yii2sshconsole\Controller;
-
-class DeployController extends Controller
+class DeployCommand extends CConsoleCommand
 {
 	public $defaultAction = 'exec';
 
@@ -63,5 +61,5 @@ class DeployController extends Controller
 And then in the local console:
 
 ```
-./yii deploy
+./yiic deploy
 ```
