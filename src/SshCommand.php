@@ -1,7 +1,5 @@
 <?php
 
-define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
-
 class LoginFailedException extends \Exception {}
 class LoginUnknownException extends \Exception {}
 class NotConnectedException extends \Exception {}
@@ -40,7 +38,7 @@ class SshCommand extends CConsoleCommand
 	 */
 	public function connect($host, $auth, $port = 22, $timeout = 10)
 	{
-		$this->ssh = new \Net_SSH2($host, $port, $timeout);
+		$this->ssh = new \phpseclib\Net\SSH2($host, $port, $timeout);
 
 		if (!isset($auth['key']) && isset($auth['username'])) {
 			// Login via username/password
@@ -65,7 +63,7 @@ class SshCommand extends CConsoleCommand
 			$username = $auth['username'];
 			$password = isset($auth['key_password']) ? $auth['key_password'] : '';
 
-			$key = new \Crypt_RSA();
+			$key = new \phpseclib\Crypt\RSA;
 			if (!empty($password)) {
 				$key->setPassword($password);
 			}
@@ -101,7 +99,7 @@ class SshCommand extends CConsoleCommand
 	 */
 	public function readLine()
 	{
-		$output = $this->ssh->_get_channel_packet(NET_SSH2_CHANNEL_EXEC);
+		$output = $this->ssh->_get_channel_packet(\phpseclib\Net\SSH2::CHANNEL_EXEC);
 
 		return $output === true ? null : $output;
 	}
