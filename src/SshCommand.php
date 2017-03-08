@@ -1,10 +1,12 @@
 <?php
 
+namespace yiisshconsole;
+
 class LoginFailedException extends \Exception {}
 class LoginUnknownException extends \Exception {}
 class NotConnectedException extends \Exception {}
 
-class SshCommand extends CConsoleCommand
+class SshCommand extends \CConsoleCommand
 {
 	/**
 	 * Store of the ssh session.
